@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+:root {
+  --ut-orange: #BF5700;
+  --ut-white: #FFFFFF;
+}
