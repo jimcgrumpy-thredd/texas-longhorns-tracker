@@ -297,7 +297,7 @@ export async function getTeamInfo(): Promise<TeamInfo> {
   };
 }
 
-export async function getRankings(): Promise<Rankings> {
+export async function getRankings(limit = 25): Promise<Rankings> {
   const res = await fetch(`${SITE_BASE}/rankings`, { cache: "no-store" });
   if (!res.ok) return { pollName: "", headline: "", entries: [] };
   const data: Record<string, unknown> = await res.json();
@@ -323,7 +323,7 @@ export async function getRankings(): Promise<Rankings> {
   return {
     pollName: String(ap.shortName ?? ap.name ?? ""),
     headline: String(ap.shortHeadline ?? ap.headline ?? ""),
-    entries: entries.sort((a, b) => a.rank - b.rank),
+    entries: entries.sort((a, b) => a.rank - b.rank).slice(0, limit),
   };
 }
 

@@ -381,12 +381,12 @@ export default async function Home() {
         {rankings.entries.length > 0 && (
           <section className="rounded-xl border border-slate-800 bg-slate-900 p-5">
             <h2 className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-1">
-              {rankings.pollName || "Rankings"}
+              {rankings.pollName ? `${rankings.pollName} · Top 10` : "Rankings"}
             </h2>
             {rankings.headline && (
               <p className="text-xs text-slate-600 mb-4">{rankings.headline}</p>
             )}
-            <RankingsTable rankings={rankings.entries} />
+            <RankingsTable rankings={rankings.entries.slice(0, 10)} />
           </section>
         )}
 
