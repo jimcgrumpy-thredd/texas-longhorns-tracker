@@ -170,7 +170,9 @@ function parseGame(event: Record<string, unknown>): Game | null {
   const venue = (comp.venue as Record<string, unknown>) ?? {};
   const address = (venue.address as Record<string, unknown>) ?? {};
   const broadcasts = (comp.broadcasts as Array<Record<string, unknown>>) ?? [];
-  const broadcastNames = (broadcasts[0]?.names as string[]) ?? [];
+  const broadcastNames = broadcasts
+    .map((b) => String((b.media as Record<string, unknown>)?.shortName ?? ""))
+    .filter(Boolean);
   const week = (event.week as Record<string, unknown>) ?? {};
 
   return {

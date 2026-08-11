@@ -129,6 +129,7 @@ function GameRow({ game, rank }: { game: Game; rank?: number }) {
             {formatDate(game.date)}
             {!game.completed && ` · ${formatTime(game.date)}`}
             {game.venue && ` · ${game.venue}${game.city ? `, ${game.city}` : ""}`}
+            {game.tv && ` · ${game.tv}`}
           </div>
         </div>
       </div>
