@@ -125,7 +125,7 @@ function GameRow({ game, rank }: { game: Game; rank?: number }) {
             {atOrVs} {rank && <span className="text-[var(--ut-orange)]">No. {rank} </span>}
             {game.opponent.name}
           </div>
-          <div className="text-xs text-slate-500 truncate">
+          <div className="text-xs text-slate-500 sm:truncate">
             {formatDate(game.date)}
             {!game.completed && ` · ${formatTime(game.date)}`}
             {game.venue && ` · ${game.venue}${game.city ? `, ${game.city}` : ""}`}
@@ -335,34 +335,34 @@ export default async function Home() {
             backgroundSize: "20px 20px",
           }}
         />
-        <div className="relative max-w-4xl mx-auto px-4 py-10">
-          <div className="flex items-center gap-4">
+        <div className="relative max-w-4xl mx-auto px-4 py-6 sm:py-10">
+          <div className="flex items-center gap-3 sm:gap-4">
             {team.logo && (
               // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={team.logo}
                 alt={team.abbreviation}
-                className="w-16 h-16 object-contain drop-shadow-lg"
+                className="w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-lg flex-shrink-0"
               />
             )}
-            <div>
-              <h1 className="text-3xl font-black tracking-tight flex items-center gap-2">
+            <div className="min-w-0 flex-1">
+              <h1 className="text-lg sm:text-3xl font-black tracking-tight flex items-center gap-1.5 sm:gap-2 flex-wrap">
                 {utRank && (
-                  <span className="text-lg font-black text-[var(--ut-orange)]">No. {utRank}</span>
+                  <span className="text-sm sm:text-lg font-black text-[var(--ut-orange)]">No. {utRank}</span>
                 )}
                 Texas Longhorns
               </h1>
-              <p className="text-slate-300 text-sm">
+              <p className="text-slate-300 text-xs sm:text-sm">
                 Football &middot; 2026 Season
                 {rankings.pollName && ` · ${rankings.pollName}`}
               </p>
             </div>
             {record && (
-              <div className="ml-auto text-right">
-                <div className="text-4xl font-black tabular-nums text-[var(--ut-orange)]">
+              <div className="text-right flex-shrink-0">
+                <div className="text-xl sm:text-4xl font-black tabular-nums text-[var(--ut-orange)]">
                   {record}
                 </div>
-                <div className="text-xs text-slate-400 mt-0.5">Record</div>
+                <div className="text-[10px] sm:text-xs text-slate-400 mt-0.5">Record</div>
               </div>
             )}
           </div>
